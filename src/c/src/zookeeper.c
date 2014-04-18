@@ -1444,13 +1444,13 @@ static int recv_buffer(int fd, buffer_list_t *buff)
 {
     int off = buff->curr_offset;
     int rc = 0;
-    //fprintf(LOGSTREAM, "rc = %d, off = %d, line %d\n", rc, off, __LINE__);
+    fprintf(LOGSTREAM, "rc = %d, off = %d, line %d\n", rc, off, __LINE__);
 
     /* if buffer is less than 4, we are reading in the length */
     if (off < 4) {
         char *buffer = (char*)&(buff->len);
         rc = recv(fd, buffer+off, sizeof(int)-off, 0);
-        //fprintf(LOGSTREAM, "rc = %d, off = %d, line %d\n", rc, off, __LINE__);
+        fprintf(LOGSTREAM, "rc = %d, off = %d, line %d\n", rc, off, __LINE__);
         switch(rc) {
         case 0:
             errno = EHOSTDOWN;

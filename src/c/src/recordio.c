@@ -222,14 +222,14 @@ int ia_end_vector(struct iarchive *ia, const char *tag)
 int ia_deserialize_bool(struct iarchive *ia, const char *name, int32_t *v)
 {
     struct buff_struct *priv = ia->priv;
-    //fprintf(stderr, "Deserializing bool %d\n", priv->off);
+    fprintf(stderr, "Deserializing bool %d\n", priv->off);
     //return ia_deserialize_int(ia, name, v);
     if ((priv->len - priv->off) < 1) {
         return -E2BIG;
     }
     *v = priv->buffer[priv->off];
     priv->off+=1;
-    //fprintf(stderr, "Deserializing bool end %d\n", priv->off);
+    fprintf(stderr, "Deserializing bool end %d\n", priv->off);
     return 0;
 }
 int ia_deserialize_buffer(struct iarchive *ia, const char *name,
